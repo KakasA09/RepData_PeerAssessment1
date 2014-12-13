@@ -111,13 +111,13 @@ mean.steps <- mean(steps.per.day$daily.steps)
 median.steps <- median(steps.per.day$daily.steps)
 
 with(steps.per.day, hist(daily.steps, col = "lightblue", freq = TRUE, main = ""))
-title(main = "Histogram of Total Steps per Day", sub = paste0("Mean = ", round(mean.steps,1), " ; 
-                                                              Median = ", round(median.steps,1)))
+title(main = "Histogram of Total Steps per Day", 
+      sub = paste0("Mean = ", round(mean.steps,1), " ; Median = ", round(median.steps,1)))
 abline(v = median.steps, col = "black", lwd = 3, lty = "dashed")
 abline(v = mean.steps , col = "black", lwd = 3, lty = "solid")
 ```
 
-![plot of chunk unnamed-chunk-2](figure/unnamed-chunk-2-1.png) 
+![Histogram of Total Steps per Day](figure/unnamed-chunk-2-1.png) 
 
 #### The mean and median total number of steps taken per day are **9354.2295082** and **10395**, respectively.  
 
@@ -140,14 +140,14 @@ mean.interval <- mean(steps.per.interval$steps.by.interval)
 median.interval <- median(steps.per.interval$steps.by.interval)
 
 with(steps.per.interval, plot(steps.by.interval ~ interval, type = "l", col = "darkred", lwd = 2, lty = 3))
-title(main = "Avg. Steps by Interval", sub = paste0("Mean = ", round(mean.interval,1), " ; 
-                                                    Median = ", round(median.interval,1)))
+title(main = "Avg. Steps by Interval", 
+      sub = paste0("Mean = ", round(mean.interval,1), " ; Median = ", round(median.interval,1)))
 abline(h = median.interval, col = "black", lwd = 3, lty = "dashed")
 abline(h = mean.interval , col = "black", lwd = 3, lty = "solid")
 abline(h = max(steps.per.interval$steps.by.interval), lwd = 3, lty = "solid", col = "lightgrey")
 ```
 
-![plot of chunk unnamed-chunk-3](figure/unnamed-chunk-3-1.png) 
+![Avg. Steps by Interval](figure/unnamed-chunk-3-1.png) 
 
 ```r
     #Top Interval
@@ -201,7 +201,7 @@ abline(v = median.steps.imputed, col = "black", lwd = 3, lty = "dashed")
 abline(v = mean.steps.imputed , col = "black", lwd = 3, lty = "solid")
 ```
 
-![plot of chunk xtable](figure/xtable-1.png) 
+![Histogram of Total Steps per Day (imputed data](figure/xtable-1.png) 
 
 ```r
 x <- data.frame(cbind(mean = round(mean.steps), mean.imputed = round(mean.steps.imputed), 
@@ -212,7 +212,7 @@ print(table, type = "html")
 ```
 
 <!-- html table generated in R 3.1.2 by xtable 1.7-4 package -->
-<!-- Sat Dec 13 11:24:07 2014 -->
+<!-- Sat Dec 13 11:39:39 2014 -->
 <table border=1>
 <tr> <th>  </th> <th> mean </th> <th> mean.imputed </th> <th> median </th> <th> median.imputed </th>  </tr>
   <tr> <td align="right"> 1 </td> <td align="right"> 9354.00 </td> <td align="right"> 10785.00 </td> <td align="right"> 10395.00 </td> <td align="right"> 10909.00 </td> </tr>

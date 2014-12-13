@@ -87,7 +87,7 @@ head(data2)
 Please see below a **histogram** of the total number of steps taken ech day. Note that the **dashed** vertical line represents the **median** value, and the **solid** vertical line represents the **mean** value of the steps per day.
 
 
-```{r, results='hold', echo=TRUE, fig.width=7, fig.height= 7, warning = FALSE, error = FALSE}
+```{r, results='hold', echo=TRUE, fig.width=7, fig.height= 7, warning = FALSE, error = FALSE, fig.cap="Histogram of Total Steps per Day"}
 
 steps.per.day <- data2[, sum(steps, na.rm = TRUE), by = date]
 setnames(steps.per.day, "V1","daily.steps")
@@ -96,8 +96,8 @@ mean.steps <- mean(steps.per.day$daily.steps)
 median.steps <- median(steps.per.day$daily.steps)
 
 with(steps.per.day, hist(daily.steps, col = "lightblue", freq = TRUE, main = ""))
-title(main = "Histogram of Total Steps per Day", sub = paste0("Mean = ", round(mean.steps,1), " ; 
-                                                              Median = ", round(median.steps,1)))
+title(main = "Histogram of Total Steps per Day", 
+      sub = paste0("Mean = ", round(mean.steps,1), " ; Median = ", round(median.steps,1)))
 abline(v = median.steps, col = "black", lwd = 3, lty = "dashed")
 abline(v = mean.steps , col = "black", lwd = 3, lty = "solid")
 
@@ -116,7 +116,7 @@ Additionally, the **grey solid** horizontal line represents the top interval wit
 Below, you will also see the top interval that contains the maximum number of steps **(occuring between 8:35am-8:40am)**.  
 
 
-```{r, results='hold', echo=TRUE, fig.width=7, fig.height= 7, warning = FALSE, error = FALSE, message = FALSE}
+```{r, results='hold', echo=TRUE, fig.width=7, fig.height= 7, warning = FALSE, error = FALSE, message = FALSE, fig.cap="Avg. Steps by Interval"}
 
 steps.per.interval <- data2[, mean(steps, na.rm = TRUE), by = interval]
 setnames(steps.per.interval, "V1","steps.by.interval")
@@ -125,8 +125,8 @@ mean.interval <- mean(steps.per.interval$steps.by.interval)
 median.interval <- median(steps.per.interval$steps.by.interval)
 
 with(steps.per.interval, plot(steps.by.interval ~ interval, type = "l", col = "darkred", lwd = 2, lty = 3))
-title(main = "Avg. Steps by Interval", sub = paste0("Mean = ", round(mean.interval,1), " ; 
-                                                    Median = ", round(median.interval,1)))
+title(main = "Avg. Steps by Interval", 
+      sub = paste0("Mean = ", round(mean.interval,1), " ; Median = ", round(median.interval,1)))
 abline(h = median.interval, col = "black", lwd = 3, lty = "dashed")
 abline(h = mean.interval , col = "black", lwd = 3, lty = "solid")
 abline(h = max(steps.per.interval$steps.by.interval), lwd = 3, lty = "solid", col = "lightgrey")
@@ -166,7 +166,7 @@ Please see a histogram of the total number of steps taken each day based on the 
 
 As you can see, both the mean and median imputed values are higher than the original. Furthermore, the median and mean imputed values are quite close to each other.  
 
-```{r xtable, results='asis', echo=TRUE, fig.width=7, fig.height= 7, warning = FALSE, error = FALSE, message = FALSE}
+```{r xtable, results='asis', echo=TRUE, fig.width=7, fig.height= 7, warning = FALSE, error = FALSE, message = FALSE, fig.cap = "Histogram of Total Steps per Day (imputed data"}
 
 steps.per.day.imputed <- imputed.data [, sum(steps), by = date]
 setnames(steps.per.day.imputed, "V1","daily.steps")
